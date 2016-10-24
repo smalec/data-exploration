@@ -29,7 +29,7 @@ function H = closest_k( X, Y, k)
     
     for i = 1: N
         dist = sqrt(sum((Y - X(:, i)) .^ 2));
-        sort_dist = sort(dist);
-        H(:, i) = find(dist <= sort_dist(k), k);
+        [~, indexes] = sort(dist);
+        H(:, i) = indexes(1:k);
     end
 end

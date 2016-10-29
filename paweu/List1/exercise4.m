@@ -8,17 +8,23 @@ M = 1000;
 X = rand(d, N);
 Y = rand(d, N);
 
+tic
 D11 = calc_dist(X, Y);
+toc
+tic
 D21 = calc_dist2(X, Y);
+toc
 isequal(D11, D21)
 
 N = 10000;
+tic
 D2 = calc_dist(rand(d, N), rand(d, M));
+toc
 
 
 function D = calc_dist( X, Y )
-    [~, N] = size(X);
-    [~, M] = size(Y);
+    N = size(X, 2);
+    M = size(Y, 2);
     D = zeros(N, M);
     
     for i = 1 : M
